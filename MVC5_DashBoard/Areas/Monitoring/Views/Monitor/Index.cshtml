@@ -1,0 +1,67 @@
+﻿@model IEnumerable<ND.BO.MonitorResultBO>
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Index</title>
+</head>
+<body>
+    <div ng-controller="MonitorGridController">
+        <div id="grid1" ui-grid="gridOptions" ui-grid-pagination style="height: 500px;"></div>
+    </div>
+
+    @*<p>
+        @Html.ActionLink("Create New", "Create")
+    </p>
+    <table class="table">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.ResultDate)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ApplicationCode)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ApplicationName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.MachineName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Result)
+            </th>
+            <th></th>
+        </tr>
+
+        @foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.ResultDate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ApplicationCode)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ApplicationName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.MachineName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Result)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
+                @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
+                @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
+            </td>
+        </tr>
+    }
+
+    </table>*@
+
+   
+</body>
+</html>

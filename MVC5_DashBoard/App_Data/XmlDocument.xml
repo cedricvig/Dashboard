@@ -1,0 +1,1088 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>ND.MonitorDashboard.Web</name>
+    </assembly>
+    <members>
+        <member name="M:ND.MonitorDasboard.Web.Areas.HelpPage.ApiDescriptionExtensions.GetFriendlyId(System.Web.Http.Description.ApiDescription)">
+            <summary>
+            Generates an URI-friendly ID for the <see cref="T:System.Web.Http.Description.ApiDescription"/>. E.g. "Get-Values-id_name" instead of "GetValues/{id}?name={name}"
+            </summary>
+            <param name="description">The <see cref="T:System.Web.Http.Description.ApiDescription"/>.</param>
+            <returns>The ID as a string.</returns>
+        </member>
+        <member name="T:ND.MonitorDasboard.Web.Areas.HelpPage.HelpPageConfig">
+            <summary>
+            Use this class to customize the Help Page.
+            For example you can set a custom <see cref="T:System.Web.Http.Description.IDocumentationProvider"/> to supply the documentation
+            or you can provide the samples for the requests/responses.
+            </summary>
+        </member>
+        <member name="T:ND.MonitorDasboard.Web.Areas.HelpPage.Controllers.HelpController">
+            <summary>
+            The controller that will handle requests for the help page.
+            </summary>
+        </member>
+        <member name="M:ND.MonitorDasboard.Web.Areas.HelpPage.HelpPageConfigurationExtensions.SetDocumentationProvider(System.Web.Http.HttpConfiguration,System.Web.Http.Description.IDocumentationProvider)">
+            <summary>
+            Sets the documentation provider for help page.
+            </summary>
+            <param name="config">The <see cref="T:System.Web.Http.HttpConfiguration"/>.</param>
+            <param name="documentationProvider">The documentation provider.</param>
+        </member>
+        <member name="M:ND.MonitorDasboard.Web.Areas.HelpPage.HelpPageConfigurationExtensions.SetSampleObjects(System.Web.Http.HttpConfiguration,System.Collections.Generic.IDictionary{System.Type,System.Object})">
+            <summary>
+            Sets the objects that will be used by the formatters to produce sample requests/responses.
+            </summary>
+            <param name="config">The <see cref="T:System.Web.Http.HttpConfiguration"/>.</param>
+            <param name="sampleObjects">The sample objects.</param>
+        </member>
+        <member name="M:ND.MonitorDasboard.Web.Areas.HelpPage.HelpPageConfigurationExtensions.SetSampleRequest(System.Web.Http.HttpConfiguration,System.Object,System.Net.Http.Headers.MediaTypeHeaderValue,System.String,System.String)">
+            <summary>
+            Sets the sample request directly for the specified media type and action.
+            </summary>
+            <param name="config">The <see cref="T:System.Web.Http.HttpConfiguration"/>.</param>
+            <param name="sample">The sample request.</param>
+            <param name="mediaType">The media type.</param>
+            <param name="controllerName">Name of the controller.</param>
+            <param name="actionName">Name of the action.</param>
+        </member>
+        <member name="M:ND.MonitorDasboard.Web.Areas.HelpPage.HelpPageConfigurationExtensions.SetSampleRequest(System.Web.Http.HttpConfiguration,System.Object,System.Net.Http.Headers.MediaTypeHeaderValue,System.String,System.String,System.String[])">
+            <summary>
+            Sets the sample request directly for the specified media type and action with parameters.
+            </summary>
+            <param name="config">The <see cref="T:System.Web.Http.HttpConfiguration"/>.</param>
+            <param name="sample">The sample request.</param>
+            <param name="mediaType">The media type.</param>
+            <param name="controllerName">Name of the controller.</param>
+            <param name="actionName">Name of the action.</param>
+            <param name="parameterNames">The parameter names.</param>
+        </member>
+        <member name="M:ND.MonitorDasboard.Web.Areas.HelpPage.HelpPageConfigurationExtensions.SetSampleResponse(System.Web.Http.HttpConfiguration,System.Object,System.Net.Http.Headers.MediaTypeHeaderValue,System.String,System.String)">
+            <summary>
+            Sets the sample request directly for the specified media type of the action.
+            </summary>
+            <param name="config">The <see cref="T:System.Web.Http.HttpConfiguration"/>.</param>
+            <param name="sample">The sample response.</param>
+            <param name="mediaType">The media type.</param>
+            <param name="controllerName">Name of the controller.</param>
+            <param name="actionName">Name of the action.</param>
+        </member>
+        <member name="M:ND.MonitorDasboard.Web.Areas.HelpPage.HelpPageConfigurationExtensions.SetSampleResponse(System.Web.Http.HttpConfiguration,System.Object,System.Net.Http.Headers.MediaTypeHeaderValue,System.String,System.String,System.String[])">
+            <summary>
+            Sets the sample response directly for the specified media type of the action with specific parameters.
+            </summary>
+            <param name="config">The <see cref="T:System.Web.Http.HttpConfiguration"/>.</param>
+            <param name="sample">The sample response.</param>
+            <param name="mediaType">The media type.</param>
+            <param name="controllerName">Name of the controller.</param>
+            <param name="actionName">Name of the action.</param>
+            <param name="parameterNames">The parameter names.</param>
+        </member>
+        <member name="M:ND.MonitorDasboard.Web.Areas.HelpPage.HelpPageConfigurationExtensions.SetSampleForMediaType(System.Web.Http.HttpConfiguration,System.Object,System.Net.Http.Headers.MediaTypeHeaderValue)">
+            <summary>
+            Sets the sample directly for all actions with the specified media type.
+            </summary>
+            <param name="config">The <see cref="T:System.Web.Http.HttpConfiguration"/>.</param>
+            <param name="sample">The sample.</param>
+            <param name="mediaType">The media type.</param>
+        </member>
+        <member name="M:ND.MonitorDasboard.Web.Areas.HelpPage.HelpPageConfigurationExtensions.SetSampleForType(System.Web.Http.HttpConfiguration,System.Object,System.Net.Http.Headers.MediaTypeHeaderValue,System.Type)">
+            <summary>
+            Sets the sample directly for all actions with the specified type and media type.
+            </summary>
+            <param name="config">The <see cref="T:System.Web.Http.HttpConfiguration"/>.</param>
+            <param name="sample">The sample.</param>
+            <param name="mediaType">The media type.</param>
+            <param name="type">The parameter type or return type of an action.</param>
+        </member>
+        <member name="M:ND.MonitorDasboard.Web.Areas.HelpPage.HelpPageConfigurationExtensions.SetActualRequestType(System.Web.Http.HttpConfiguration,System.Type,System.String,System.String)">
+            <summary>
+            Specifies the actual type of <see cref="T:System.Net.Http.ObjectContent`1"/> passed to the <see cref="T:System.Net.Http.HttpRequestMessage"/> in an action.
+            The help page will use this information to produce more accurate request samples.
+            </summary>
+            <param name="config">The <see cref="T:System.Web.Http.HttpConfiguration"/>.</param>
+            <param name="type">The type.</param>
+            <param name="controllerName">Name of the controller.</param>
+            <param name="actionName">Name of the action.</param>
+        </member>
+        <member name="M:ND.MonitorDasboard.Web.Areas.HelpPage.HelpPageConfigurationExtensions.SetActualRequestType(System.Web.Http.HttpConfiguration,System.Type,System.String,System.String,System.String[])">
+            <summary>
+            Specifies the actual type of <see cref="T:System.Net.Http.ObjectContent`1"/> passed to the <see cref="T:System.Net.Http.HttpRequestMessage"/> in an action.
+            The help page will use this information to produce more accurate request samples.
+            </summary>
+            <param name="config">The <see cref="T:System.Web.Http.HttpConfiguration"/>.</param>
+            <param name="type">The type.</param>
+            <param name="controllerName">Name of the controller.</param>
+            <param name="actionName">Name of the action.</param>
+            <param name="parameterNames">The parameter names.</param>
+        </member>
+        <member name="M:ND.MonitorDasboard.Web.Areas.HelpPage.HelpPageConfigurationExtensions.SetActualResponseType(System.Web.Http.HttpConfiguration,System.Type,System.String,System.String)">
+            <summary>
+            Specifies the actual type of <see cref="T:System.Net.Http.ObjectContent`1"/> returned as part of the <see cref="T:System.Net.Http.HttpRequestMessage"/> in an action.
+            The help page will use this information to produce more accurate response samples.
+            </summary>
+            <param name="config">The <see cref="T:System.Web.Http.HttpConfiguration"/>.</param>
+            <param name="type">The type.</param>
+            <param name="controllerName">Name of the controller.</param>
+            <param name="actionName">Name of the action.</param>
+        </member>
+        <member name="M:ND.MonitorDasboard.Web.Areas.HelpPage.HelpPageConfigurationExtensions.SetActualResponseType(System.Web.Http.HttpConfiguration,System.Type,System.String,System.String,System.String[])">
+            <summary>
+            Specifies the actual type of <see cref="T:System.Net.Http.ObjectContent`1"/> returned as part of the <see cref="T:System.Net.Http.HttpRequestMessage"/> in an action.
+            The help page will use this information to produce more accurate response samples.
+            </summary>
+            <param name="config">The <see cref="T:System.Web.Http.HttpConfiguration"/>.</param>
+            <param name="type">The type.</param>
+            <param name="controllerName">Name of the controller.</param>
+            <param name="actionName">Name of the action.</param>
+            <param name="parameterNames">The parameter names.</param>
+        </member>
+        <member name="M:ND.MonitorDasboard.Web.Areas.HelpPage.HelpPageConfigurationExtensions.GetHelpPageSampleGenerator(System.Web.Http.HttpConfiguration)">
+            <summary>
+            Gets the help page sample generator.
+            </summary>
+            <param name="config">The <see cref="T:System.Web.Http.HttpConfiguration"/>.</param>
+            <returns>The help page sample generator.</returns>
+        </member>
+        <member name="M:ND.MonitorDasboard.Web.Areas.HelpPage.HelpPageConfigurationExtensions.SetHelpPageSampleGenerator(System.Web.Http.HttpConfiguration,ND.MonitorDasboard.Web.Areas.HelpPage.HelpPageSampleGenerator)">
+            <summary>
+            Sets the help page sample generator.
+            </summary>
+            <param name="config">The <see cref="T:System.Web.Http.HttpConfiguration"/>.</param>
+            <param name="sampleGenerator">The help page sample generator.</param>
+        </member>
+        <member name="M:ND.MonitorDasboard.Web.Areas.HelpPage.HelpPageConfigurationExtensions.GetModelDescriptionGenerator(System.Web.Http.HttpConfiguration)">
+            <summary>
+            Gets the model description generator.
+            </summary>
+            <param name="config">The configuration.</param>
+            <returns>The <see cref="T:ND.MonitorDasboard.Web.Areas.HelpPage.ModelDescriptions.ModelDescriptionGenerator"/></returns>
+        </member>
+        <member name="M:ND.MonitorDasboard.Web.Areas.HelpPage.HelpPageConfigurationExtensions.GetHelpPageApiModel(System.Web.Http.HttpConfiguration,System.String)">
+            <summary>
+            Gets the model that represents an API displayed on the help page. The model is initialized on the first call and cached for subsequent calls.
+            </summary>
+            <param name="config">The <see cref="T:System.Web.Http.HttpConfiguration"/>.</param>
+            <param name="apiDescriptionId">The <see cref="T:System.Web.Http.Description.ApiDescription"/> ID.</param>
+            <returns>
+            An <see cref="T:ND.MonitorDasboard.Web.Areas.HelpPage.Models.HelpPageApiModel"/>
+            </returns>
+        </member>
+        <member name="T:ND.MonitorDasboard.Web.Areas.HelpPage.ModelDescriptions.ModelDescription">
+            <summary>
+            Describes a type model.
+            </summary>
+        </member>
+        <member name="T:ND.MonitorDasboard.Web.Areas.HelpPage.ModelDescriptions.ModelDescriptionGenerator">
+            <summary>
+            Generates model descriptions for given types.
+            </summary>
+        </member>
+        <member name="T:ND.MonitorDasboard.Web.Areas.HelpPage.ModelDescriptions.ModelNameAttribute">
+            <summary>
+            Use this attribute to change the name of the <see cref="T:ND.MonitorDasboard.Web.Areas.HelpPage.ModelDescriptions.ModelDescription"/> generated for a type.
+            </summary>
+        </member>
+        <member name="T:ND.MonitorDasboard.Web.Areas.HelpPage.Models.HelpPageApiModel">
+            <summary>
+            The model that represents an API displayed on the help page.
+            </summary>
+        </member>
+        <member name="M:ND.MonitorDasboard.Web.Areas.HelpPage.Models.HelpPageApiModel.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:ND.MonitorDasboard.Web.Areas.HelpPage.Models.HelpPageApiModel"/> class.
+            </summary>
+        </member>
+        <member name="P:ND.MonitorDasboard.Web.Areas.HelpPage.Models.HelpPageApiModel.ApiDescription">
+            <summary>
+            Gets or sets the <see cref="P:ND.MonitorDasboard.Web.Areas.HelpPage.Models.HelpPageApiModel.ApiDescription"/> that describes the API.
+            </summary>
+        </member>
+        <member name="P:ND.MonitorDasboard.Web.Areas.HelpPage.Models.HelpPageApiModel.UriParameters">
+            <summary>
+            Gets or sets the <see cref="T:ND.MonitorDasboard.Web.Areas.HelpPage.ModelDescriptions.ParameterDescription"/> collection that describes the URI parameters for the API.
+            </summary>
+        </member>
+        <member name="P:ND.MonitorDasboard.Web.Areas.HelpPage.Models.HelpPageApiModel.RequestDocumentation">
+            <summary>
+            Gets or sets the documentation for the request.
+            </summary>
+        </member>
+        <member name="P:ND.MonitorDasboard.Web.Areas.HelpPage.Models.HelpPageApiModel.RequestModelDescription">
+            <summary>
+            Gets or sets the <see cref="T:ND.MonitorDasboard.Web.Areas.HelpPage.ModelDescriptions.ModelDescription"/> that describes the request body.
+            </summary>
+        </member>
+        <member name="P:ND.MonitorDasboard.Web.Areas.HelpPage.Models.HelpPageApiModel.RequestBodyParameters">
+            <summary>
+            Gets the request body parameter descriptions.
+            </summary>
+        </member>
+        <member name="P:ND.MonitorDasboard.Web.Areas.HelpPage.Models.HelpPageApiModel.ResourceDescription">
+            <summary>
+            Gets or sets the <see cref="T:ND.MonitorDasboard.Web.Areas.HelpPage.ModelDescriptions.ModelDescription"/> that describes the resource.
+            </summary>
+        </member>
+        <member name="P:ND.MonitorDasboard.Web.Areas.HelpPage.Models.HelpPageApiModel.ResourceProperties">
+            <summary>
+            Gets the resource property descriptions.
+            </summary>
+        </member>
+        <member name="P:ND.MonitorDasboard.Web.Areas.HelpPage.Models.HelpPageApiModel.SampleRequests">
+            <summary>
+            Gets the sample requests associated with the API.
+            </summary>
+        </member>
+        <member name="P:ND.MonitorDasboard.Web.Areas.HelpPage.Models.HelpPageApiModel.SampleResponses">
+            <summary>
+            Gets the sample responses associated with the API.
+            </summary>
+        </member>
+        <member name="P:ND.MonitorDasboard.Web.Areas.HelpPage.Models.HelpPageApiModel.ErrorMessages">
+            <summary>
+            Gets the error messages associated with this model.
+            </summary>
+        </member>
+        <member name="T:ND.MonitorDasboard.Web.Areas.HelpPage.MultipleXmlDocumentationProvider">
+            <summary>
+            A custom <see cref="T:System.Web.Http.Description.IDocumentationProvider"/> that reads the API documentation from an XML documentation file.
+            </summary>
+        </member>
+        <member name="M:ND.MonitorDasboard.Web.Areas.HelpPage.MultipleXmlDocumentationProvider.#ctor(System.String[])">
+            <summary>
+            Initializes a new instance of the <see cref="T:ND.MonitorDasboard.Web.Areas.HelpPage.MultipleXmlDocumentationProvider" /> class.
+            </summary>
+            <param name="documentPaths">The physical paths to XML documents.</param>
+            <exception cref="T:System.ArgumentNullException">documentPaths</exception>
+        </member>
+        <member name="M:ND.MonitorDasboard.Web.Areas.HelpPage.MultipleXmlDocumentationProvider.GetDocumentation(System.Web.Http.Controllers.HttpControllerDescriptor)">
+            <summary>
+            Gets the documentation based on <see cref="T:System.Web.Http.Controllers.HttpControllerDescriptor" />.
+            </summary>
+            <param name="controllerDescriptor">The controller descriptor.</param>
+            <returns>The documentation for the controller.</returns>
+        </member>
+        <member name="M:ND.MonitorDasboard.Web.Areas.HelpPage.MultipleXmlDocumentationProvider.GetDocumentation(System.Web.Http.Controllers.HttpActionDescriptor)">
+            <summary>
+            Gets the documentation based on <see cref="T:System.Web.Http.Controllers.HttpActionDescriptor" />.
+            </summary>
+            <param name="actionDescriptor">The action descriptor.</param>
+            <returns>The documentation for the action.</returns>
+        </member>
+        <member name="M:ND.MonitorDasboard.Web.Areas.HelpPage.MultipleXmlDocumentationProvider.GetDocumentation(System.Web.Http.Controllers.HttpParameterDescriptor)">
+            <summary>
+            Gets the documentation based on <see cref="T:System.Web.Http.Controllers.HttpParameterDescriptor" />.
+            </summary>
+            <param name="parameterDescriptor">The parameter descriptor.</param>
+            <returns>The documentation for the parameter.</returns>
+        </member>
+        <member name="M:ND.MonitorDasboard.Web.Areas.HelpPage.MultipleXmlDocumentationProvider.GetDocumentation(System.Reflection.MemberInfo)">
+            <summary>
+            Gets the documentation based on <see cref="T:MemberInfo"/>.
+            </summary>
+            <param name="member">The member.</param>
+            <returns>The documentation for the member.</returns>
+        </member>
+        <member name="M:ND.MonitorDasboard.Web.Areas.HelpPage.MultipleXmlDocumentationProvider.GetDocumentation(System.Type)">
+            <summary>
+            Gets the documentation for the specified type.
+            </summary>
+            <param name="type">The type.</param>
+            <returns>The documentation for the type.</returns>
+        </member>
+        <member name="M:ND.MonitorDasboard.Web.Areas.HelpPage.MultipleXmlDocumentationProvider.GetResponseDocumentation(System.Web.Http.Controllers.HttpActionDescriptor)">
+            <summary>
+            Gets the response documentation.
+            </summary>
+            <param name="actionDescriptor">The action descriptor.</param>
+            <returns>A html-formatted string for the action response.</returns>
+        </member>
+        <member name="M:ND.MonitorDasboard.Web.Areas.HelpPage.MultipleXmlDocumentationProvider.GetMethodNode(System.Web.Http.Controllers.HttpActionDescriptor)">
+            <summary>
+            Gets the method node.
+            </summary>
+            <param name="actionDescriptor">The action descriptor.</param>
+            <returns>A xpath navigator.</returns>
+        </member>
+        <member name="M:ND.MonitorDasboard.Web.Areas.HelpPage.MultipleXmlDocumentationProvider.GetTypeNode(System.Type)">
+            <summary>
+            Gets the type node.
+            </summary>
+            <param name="type">The type.</param>
+            <returns>A xpath navigator.</returns>
+        </member>
+        <member name="M:ND.MonitorDasboard.Web.Areas.HelpPage.MultipleXmlDocumentationProvider.GetMemberName(System.Reflection.MethodInfo)">
+            <summary>
+            Gets the member name.
+            </summary>
+            <param name="method">The method.</param>
+            <returns>The member name.</returns>
+        </member>
+        <member name="M:ND.MonitorDasboard.Web.Areas.HelpPage.MultipleXmlDocumentationProvider.GetTypeName(System.Type)">
+            <summary>
+            Gets the type name.
+            </summary>
+            <param name="type">The type.</param>
+            <returns>The type name.</returns>
+        </member>
+        <member name="M:ND.MonitorDasboard.Web.Areas.HelpPage.MultipleXmlDocumentationProvider.GetTagValueForController(System.Xml.XPath.XPathNavigator,System.String)">
+            <summary>
+            Gets the tag value for a controller.
+            </summary>
+            <param name="parentNode">The parent node.</param>
+            <param name="tagName">The tag name.</param>
+            <returns>A html-formatted representation of the tag value.</returns>
+        </member>
+        <member name="M:ND.MonitorDasboard.Web.Areas.HelpPage.MultipleXmlDocumentationProvider.GetTagValueForAction(System.Xml.XPath.XPathNavigator,System.String)">
+            <summary>
+            Gets the tag value for a controller.
+            </summary>
+            <param name="parentNode">The parent node.</param>
+            <param name="tagName">The tag name.</param>
+            <returns>A html-formatted representation of the tag value.</returns>
+        </member>
+        <member name="M:ND.MonitorDasboard.Web.Areas.HelpPage.MultipleXmlDocumentationProvider.GetTagValue(System.Xml.XPath.XPathNavigator,System.String)">
+            <summary>
+            Gets the tag value.
+            </summary>
+            <param name="parentNode">The parent node.</param>
+            <param name="tagName">The tag name.</param>
+            <returns>A html-formatted representation of the tag value.</returns>
+        </member>
+        <member name="M:ND.MonitorDasboard.Web.Areas.HelpPage.MultipleXmlDocumentationProvider.ConvertDocTagsToHtml(System.String)">
+            <summary>
+            Converts the document tags to HTML.
+            </summary>
+            <param name="i">The input xml.</param>
+            <returns>A HTML-formatted string.</returns>
+        </member>
+        <member name="T:ND.MonitorDasboard.Web.Areas.HelpPage.HelpPageSampleGenerator">
+            <summary>
+            This class will generate the samples for the help page.
+            </summary>
+        </member>
+        <member name="M:ND.MonitorDasboard.Web.Areas.HelpPage.HelpPageSampleGenerator.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:ND.MonitorDasboard.Web.Areas.HelpPage.HelpPageSampleGenerator"/> class.
+            </summary>
+        </member>
+        <member name="P:ND.MonitorDasboard.Web.Areas.HelpPage.HelpPageSampleGenerator.ActualHttpMessageTypes">
+            <summary>
+            Gets CLR types that are used as the content of <see cref="T:System.Net.Http.HttpRequestMessage"/> or <see cref="T:System.Net.Http.HttpResponseMessage"/>.
+            </summary>
+        </member>
+        <member name="P:ND.MonitorDasboard.Web.Areas.HelpPage.HelpPageSampleGenerator.ActionSamples">
+            <summary>
+            Gets the objects that are used directly as samples for certain actions.
+            </summary>
+        </member>
+        <member name="P:ND.MonitorDasboard.Web.Areas.HelpPage.HelpPageSampleGenerator.SampleObjects">
+            <summary>
+            Gets the objects that are serialized as samples by the supported formatters.
+            </summary>
+        </member>
+        <member name="P:ND.MonitorDasboard.Web.Areas.HelpPage.HelpPageSampleGenerator.SampleObjectFactories">
+            <summary>
+            Gets factories for the objects that the supported formatters will serialize as samples. Processed in order,
+            stopping when the factory successfully returns a non-<see langref="null"/> object.
+            </summary>
+            <remarks>
+            Collection includes just <see cref="M:ND.MonitorDasboard.Web.Areas.HelpPage.ObjectGenerator.GenerateObject(System.Type)"/> initially. Use
+            <code>SampleObjectFactories.Insert(0, func)</code> to provide an override and
+            <code>SampleObjectFactories.Add(func)</code> to provide a fallback.</remarks>
+        </member>
+        <member name="M:ND.MonitorDasboard.Web.Areas.HelpPage.HelpPageSampleGenerator.GetSampleRequests(System.Web.Http.Description.ApiDescription)">
+            <summary>
+            Gets the request body samples for a given <see cref="T:System.Web.Http.Description.ApiDescription"/>.
+            </summary>
+            <param name="api">The <see cref="T:System.Web.Http.Description.ApiDescription"/>.</param>
+            <returns>The samples keyed by media type.</returns>
+        </member>
+        <member name="M:ND.MonitorDasboard.Web.Areas.HelpPage.HelpPageSampleGenerator.GetSampleResponses(System.Web.Http.Description.ApiDescription)">
+            <summary>
+            Gets the response body samples for a given <see cref="T:System.Web.Http.Description.ApiDescription"/>.
+            </summary>
+            <param name="api">The <see cref="T:System.Web.Http.Description.ApiDescription"/>.</param>
+            <returns>The samples keyed by media type.</returns>
+        </member>
+        <member name="M:ND.MonitorDasboard.Web.Areas.HelpPage.HelpPageSampleGenerator.GetSample(System.Web.Http.Description.ApiDescription,ND.MonitorDasboard.Web.Areas.HelpPage.SampleDirection)">
+            <summary>
+            Gets the request or response body samples.
+            </summary>
+            <param name="api">The <see cref="T:System.Web.Http.Description.ApiDescription"/>.</param>
+            <param name="sampleDirection">The value indicating whether the sample is for a request or for a response.</param>
+            <returns>The samples keyed by media type.</returns>
+        </member>
+        <member name="M:ND.MonitorDasboard.Web.Areas.HelpPage.HelpPageSampleGenerator.GetActionSample(System.String,System.String,System.Collections.Generic.IEnumerable{System.String},System.Type,System.Net.Http.Formatting.MediaTypeFormatter,System.Net.Http.Headers.MediaTypeHeaderValue,ND.MonitorDasboard.Web.Areas.HelpPage.SampleDirection)">
+            <summary>
+            Search for samples that are provided directly through <see cref="P:ND.MonitorDasboard.Web.Areas.HelpPage.HelpPageSampleGenerator.ActionSamples"/>.
+            </summary>
+            <param name="controllerName">Name of the controller.</param>
+            <param name="actionName">Name of the action.</param>
+            <param name="parameterNames">The parameter names.</param>
+            <param name="type">The CLR type.</param>
+            <param name="formatter">The formatter.</param>
+            <param name="mediaType">The media type.</param>
+            <param name="sampleDirection">The value indicating whether the sample is for a request or for a response.</param>
+            <returns>The sample that matches the parameters.</returns>
+        </member>
+        <member name="M:ND.MonitorDasboard.Web.Areas.HelpPage.HelpPageSampleGenerator.GetSampleObject(System.Type)">
+            <summary>
+            Gets the sample object that will be serialized by the formatters. 
+            First, it will look at the <see cref="P:ND.MonitorDasboard.Web.Areas.HelpPage.HelpPageSampleGenerator.SampleObjects"/>. If no sample object is found, it will try to create
+            one using <see cref="M:ND.MonitorDasboard.Web.Areas.HelpPage.HelpPageSampleGenerator.DefaultSampleObjectFactory(ND.MonitorDasboard.Web.Areas.HelpPage.HelpPageSampleGenerator,System.Type)"/> (which wraps an <see cref="T:ND.MonitorDasboard.Web.Areas.HelpPage.ObjectGenerator"/>) and other
+            factories in <see cref="P:ND.MonitorDasboard.Web.Areas.HelpPage.HelpPageSampleGenerator.SampleObjectFactories"/>.
+            </summary>
+            <param name="type">The type.</param>
+            <returns>The sample object.</returns>
+        </member>
+        <member name="M:ND.MonitorDasboard.Web.Areas.HelpPage.HelpPageSampleGenerator.ResolveHttpRequestMessageType(System.Web.Http.Description.ApiDescription)">
+            <summary>
+            Resolves the actual type of <see cref="T:System.Net.Http.ObjectContent`1"/> passed to the <see cref="T:System.Net.Http.HttpRequestMessage"/> in an action.
+            </summary>
+            <param name="api">The <see cref="T:System.Web.Http.Description.ApiDescription"/>.</param>
+            <returns>The type.</returns>
+        </member>
+        <member name="M:ND.MonitorDasboard.Web.Areas.HelpPage.HelpPageSampleGenerator.ResolveType(System.Web.Http.Description.ApiDescription,System.String,System.String,System.Collections.Generic.IEnumerable{System.String},ND.MonitorDasboard.Web.Areas.HelpPage.SampleDirection,System.Collections.ObjectModel.Collection{System.Net.Http.Formatting.MediaTypeFormatter}@)">
+            <summary>
+            Resolves the type of the action parameter or return value when <see cref="T:System.Net.Http.HttpRequestMessage"/> or <see cref="T:System.Net.Http.HttpResponseMessage"/> is used.
+            </summary>
+            <param name="api">The <see cref="T:System.Web.Http.Description.ApiDescription"/>.</param>
+            <param name="controllerName">Name of the controller.</param>
+            <param name="actionName">Name of the action.</param>
+            <param name="parameterNames">The parameter names.</param>
+            <param name="sampleDirection">The value indicating whether the sample is for a request or a response.</param>
+            <param name="formatters">The formatters.</param>
+        </member>
+        <member name="M:ND.MonitorDasboard.Web.Areas.HelpPage.HelpPageSampleGenerator.WriteSampleObjectUsingFormatter(System.Net.Http.Formatting.MediaTypeFormatter,System.Object,System.Type,System.Net.Http.Headers.MediaTypeHeaderValue)">
+            <summary>
+            Writes the sample object using formatter.
+            </summary>
+            <param name="formatter">The formatter.</param>
+            <param name="value">The value.</param>
+            <param name="type">The type.</param>
+            <param name="mediaType">Type of the media.</param>
+            <returns></returns>
+        </member>
+        <member name="T:ND.MonitorDasboard.Web.Areas.HelpPage.HelpPageSampleKey">
+            <summary>
+            This is used to identify the place where the sample should be applied.
+            </summary>
+        </member>
+        <member name="M:ND.MonitorDasboard.Web.Areas.HelpPage.HelpPageSampleKey.#ctor(System.Net.Http.Headers.MediaTypeHeaderValue)">
+            <summary>
+            Creates a new <see cref="T:ND.MonitorDasboard.Web.Areas.HelpPage.HelpPageSampleKey"/> based on media type.
+            </summary>
+            <param name="mediaType">The media type.</param>
+        </member>
+        <member name="M:ND.MonitorDasboard.Web.Areas.HelpPage.HelpPageSampleKey.#ctor(System.Net.Http.Headers.MediaTypeHeaderValue,System.Type)">
+            <summary>
+            Creates a new <see cref="T:ND.MonitorDasboard.Web.Areas.HelpPage.HelpPageSampleKey"/> based on media type and CLR type.
+            </summary>
+            <param name="mediaType">The media type.</param>
+            <param name="type">The CLR type.</param>
+        </member>
+        <member name="M:ND.MonitorDasboard.Web.Areas.HelpPage.HelpPageSampleKey.#ctor(ND.MonitorDasboard.Web.Areas.HelpPage.SampleDirection,System.String,System.String,System.Collections.Generic.IEnumerable{System.String})">
+            <summary>
+            Creates a new <see cref="T:ND.MonitorDasboard.Web.Areas.HelpPage.HelpPageSampleKey"/> based on <see cref="P:ND.MonitorDasboard.Web.Areas.HelpPage.HelpPageSampleKey.SampleDirection"/>, controller name, action name and parameter names.
+            </summary>
+            <param name="sampleDirection">The <see cref="P:ND.MonitorDasboard.Web.Areas.HelpPage.HelpPageSampleKey.SampleDirection"/>.</param>
+            <param name="controllerName">Name of the controller.</param>
+            <param name="actionName">Name of the action.</param>
+            <param name="parameterNames">The parameter names.</param>
+        </member>
+        <member name="M:ND.MonitorDasboard.Web.Areas.HelpPage.HelpPageSampleKey.#ctor(System.Net.Http.Headers.MediaTypeHeaderValue,ND.MonitorDasboard.Web.Areas.HelpPage.SampleDirection,System.String,System.String,System.Collections.Generic.IEnumerable{System.String})">
+            <summary>
+            Creates a new <see cref="T:ND.MonitorDasboard.Web.Areas.HelpPage.HelpPageSampleKey"/> based on media type, <see cref="P:ND.MonitorDasboard.Web.Areas.HelpPage.HelpPageSampleKey.SampleDirection"/>, controller name, action name and parameter names.
+            </summary>
+            <param name="mediaType">The media type.</param>
+            <param name="sampleDirection">The <see cref="P:ND.MonitorDasboard.Web.Areas.HelpPage.HelpPageSampleKey.SampleDirection"/>.</param>
+            <param name="controllerName">Name of the controller.</param>
+            <param name="actionName">Name of the action.</param>
+            <param name="parameterNames">The parameter names.</param>
+        </member>
+        <member name="P:ND.MonitorDasboard.Web.Areas.HelpPage.HelpPageSampleKey.ControllerName">
+            <summary>
+            Gets the name of the controller.
+            </summary>
+            <value>
+            The name of the controller.
+            </value>
+        </member>
+        <member name="P:ND.MonitorDasboard.Web.Areas.HelpPage.HelpPageSampleKey.ActionName">
+            <summary>
+            Gets the name of the action.
+            </summary>
+            <value>
+            The name of the action.
+            </value>
+        </member>
+        <member name="P:ND.MonitorDasboard.Web.Areas.HelpPage.HelpPageSampleKey.MediaType">
+            <summary>
+            Gets the media type.
+            </summary>
+            <value>
+            The media type.
+            </value>
+        </member>
+        <member name="P:ND.MonitorDasboard.Web.Areas.HelpPage.HelpPageSampleKey.ParameterNames">
+            <summary>
+            Gets the parameter names.
+            </summary>
+        </member>
+        <member name="P:ND.MonitorDasboard.Web.Areas.HelpPage.HelpPageSampleKey.SampleDirection">
+            <summary>
+            Gets the <see cref="P:ND.MonitorDasboard.Web.Areas.HelpPage.HelpPageSampleKey.SampleDirection"/>.
+            </summary>
+        </member>
+        <member name="T:ND.MonitorDasboard.Web.Areas.HelpPage.ImageSample">
+            <summary>
+            This represents an image sample on the help page. There's a display template named ImageSample associated with this class.
+            </summary>
+        </member>
+        <member name="M:ND.MonitorDasboard.Web.Areas.HelpPage.ImageSample.#ctor(System.String)">
+            <summary>
+            Initializes a new instance of the <see cref="T:ND.MonitorDasboard.Web.Areas.HelpPage.ImageSample"/> class.
+            </summary>
+            <param name="src">The URL of an image.</param>
+        </member>
+        <member name="T:ND.MonitorDasboard.Web.Areas.HelpPage.InvalidSample">
+            <summary>
+            This represents an invalid sample on the help page. There's a display template named InvalidSample associated with this class.
+            </summary>
+        </member>
+        <member name="T:ND.MonitorDasboard.Web.Areas.HelpPage.ObjectGenerator">
+            <summary>
+            This class will create an object of a given type and populate it with sample data.
+            </summary>
+        </member>
+        <member name="M:ND.MonitorDasboard.Web.Areas.HelpPage.ObjectGenerator.GenerateObject(System.Type)">
+            <summary>
+            Generates an object for a given type. The type needs to be public, have a public default constructor and settable public properties/fields. Currently it supports the following types:
+            Simple types: <see cref="T:System.Int32"/>, <see cref="T:System.String"/>, <see cref="T:System.Enum"/>, <see cref="T:System.DateTime"/>, <see cref="T:System.Uri"/>, etc.
+            Complex types: POCO types.
+            Nullables: <see cref="T:System.Nullable`1"/>.
+            Arrays: arrays of simple types or complex types.
+            Key value pairs: <see cref="T:System.Collections.Generic.KeyValuePair`2"/>
+            Tuples: <see cref="T:System.Tuple`1"/>, <see cref="T:System.Tuple`2"/>, etc
+            Dictionaries: <see cref="T:System.Collections.Generic.IDictionary`2"/> or anything deriving from <see cref="T:System.Collections.Generic.IDictionary`2"/>.
+            Collections: <see cref="T:System.Collections.Generic.IList`1"/>, <see cref="T:System.Collections.Generic.IEnumerable`1"/>, <see cref="T:System.Collections.Generic.ICollection`1"/>, <see cref="T:System.Collections.IList"/>, <see cref="T:System.Collections.IEnumerable"/>, <see cref="T:System.Collections.ICollection"/> or anything deriving from <see cref="T:System.Collections.Generic.ICollection`1"/> or <see cref="T:System.Collections.IList"/>.
+            Queryables: <see cref="T:System.Linq.IQueryable"/>, <see cref="T:System.Linq.IQueryable`1"/>.
+            </summary>
+            <param name="type">The type.</param>
+            <returns>An object of the given type.</returns>
+        </member>
+        <member name="T:ND.MonitorDasboard.Web.Areas.HelpPage.SampleDirection">
+            <summary>
+            Indicates whether the sample is used for request or response
+            </summary>
+        </member>
+        <member name="T:ND.MonitorDasboard.Web.Areas.HelpPage.TextSample">
+            <summary>
+            This represents a preformatted text sample on the help page. There's a display template named TextSample associated with this class.
+            </summary>
+        </member>
+        <member name="T:ND.MonitorDasboard.Web.Areas.HelpPage.XmlDocumentationProvider">
+            <summary>
+            A custom <see cref="T:System.Web.Http.Description.IDocumentationProvider"/> that reads the API documentation from an XML documentation file.
+            </summary>
+        </member>
+        <member name="M:ND.MonitorDasboard.Web.Areas.HelpPage.XmlDocumentationProvider.#ctor(System.String)">
+            <summary>
+            Initializes a new instance of the <see cref="T:ND.MonitorDasboard.Web.Areas.HelpPage.XmlDocumentationProvider"/> class.
+            </summary>
+            <param name="documentPath">The physical path to XML document.</param>
+        </member>
+        <member name="T:ND.MonitorDasboard.Web.Config.Monitor">
+            <summary>
+            The Monitor Configuration Element.
+            </summary>
+        </member>
+        <member name="M:ND.MonitorDasboard.Web.Config.Monitor.IsReadOnly">
+            <summary>
+            Gets a value indicating whether the element is read-only.
+            </summary>
+        </member>
+        <member name="F:ND.MonitorDasboard.Web.Config.Monitor.ApplicationCodePropertyName">
+            <summary>
+            The XML name of the <see cref="P:ND.MonitorDasboard.Web.Config.Monitor.ApplicationCode"/> property.
+            </summary>
+        </member>
+        <member name="P:ND.MonitorDasboard.Web.Config.Monitor.ApplicationCode">
+            <summary>
+            Gets or sets the ApplicationCode.
+            </summary>
+        </member>
+        <member name="F:ND.MonitorDasboard.Web.Config.Monitor.ApplicationNamePropertyName">
+            <summary>
+            The XML name of the <see cref="P:ND.MonitorDasboard.Web.Config.Monitor.ApplicationName"/> property.
+            </summary>
+        </member>
+        <member name="P:ND.MonitorDasboard.Web.Config.Monitor.ApplicationName">
+            <summary>
+            Gets or sets the ApplicationName.
+            </summary>
+        </member>
+        <member name="F:ND.MonitorDasboard.Web.Config.Monitor.RemotePortPropertyName">
+            <summary>
+            The XML name of the <see cref="P:ND.MonitorDasboard.Web.Config.Monitor.RemotePort"/> property.
+            </summary>
+        </member>
+        <member name="P:ND.MonitorDasboard.Web.Config.Monitor.RemotePort">
+            <summary>
+            Gets or sets the RemotePort.
+            </summary>
+        </member>
+        <member name="T:ND.MonitorDasboard.Web.Config.Node">
+            <summary>
+            The Node Configuration Element.
+            </summary>
+        </member>
+        <member name="M:ND.MonitorDasboard.Web.Config.Node.IsReadOnly">
+            <summary>
+            Gets a value indicating whether the element is read-only.
+            </summary>
+        </member>
+        <member name="F:ND.MonitorDasboard.Web.Config.Node.MachineNamePropertyName">
+            <summary>
+            The XML name of the <see cref="P:ND.MonitorDasboard.Web.Config.Node.MachineName"/> property.
+            </summary>
+        </member>
+        <member name="P:ND.MonitorDasboard.Web.Config.Node.MachineName">
+            <summary>
+            Gets or sets the MachineName.
+            </summary>
+        </member>
+        <member name="F:ND.MonitorDasboard.Web.Config.Node.LifeResultPropertyName">
+            <summary>
+            The XML name of the <see cref="P:ND.MonitorDasboard.Web.Config.Node.LifeResult"/> property.
+            </summary>
+        </member>
+        <member name="P:ND.MonitorDasboard.Web.Config.Node.LifeResult">
+            <summary>
+            Gets or sets the LifeResult.
+            </summary>
+        </member>
+        <member name="T:ND.MonitorDasboard.Web.Config.Cluster">
+            <summary>
+            The Cluster Configuration Element.
+            </summary>
+        </member>
+        <member name="M:ND.MonitorDasboard.Web.Config.Cluster.IsReadOnly">
+            <summary>
+            Gets a value indicating whether the element is read-only.
+            </summary>
+        </member>
+        <member name="F:ND.MonitorDasboard.Web.Config.Cluster.CodePropertyName">
+            <summary>
+            The XML name of the <see cref="P:ND.MonitorDasboard.Web.Config.Cluster.Code"/> property.
+            </summary>
+        </member>
+        <member name="P:ND.MonitorDasboard.Web.Config.Cluster.Code">
+            <summary>
+            Gets or sets the Code.
+            </summary>
+        </member>
+        <member name="F:ND.MonitorDasboard.Web.Config.Cluster.LabelPropertyName">
+            <summary>
+            The XML name of the <see cref="P:ND.MonitorDasboard.Web.Config.Cluster.Label"/> property.
+            </summary>
+        </member>
+        <member name="P:ND.MonitorDasboard.Web.Config.Cluster.Label">
+            <summary>
+            Gets or sets the Label.
+            </summary>
+        </member>
+        <member name="F:ND.MonitorDasboard.Web.Config.Cluster.NodesPropertyName">
+            <summary>
+            The XML name of the <see cref="P:ND.MonitorDasboard.Web.Config.Cluster.Nodes"/> property.
+            </summary>
+        </member>
+        <member name="P:ND.MonitorDasboard.Web.Config.Cluster.Nodes">
+            <summary>
+            Gets or sets the Nodes.
+            </summary>
+        </member>
+        <member name="F:ND.MonitorDasboard.Web.Config.Cluster.EnvironmentPropertyName">
+            <summary>
+            The XML name of the <see cref="P:ND.MonitorDasboard.Web.Config.Cluster.Environment"/> property.
+            </summary>
+        </member>
+        <member name="P:ND.MonitorDasboard.Web.Config.Cluster.Environment">
+            <summary>
+            Gets or sets the Environment.
+            </summary>
+        </member>
+        <member name="T:ND.MonitorDasboard.Web.Config.Monitors">
+            <summary>
+            A collection of Monitor instances.
+            </summary>
+        </member>
+        <member name="F:ND.MonitorDasboard.Web.Config.Monitors.MonitorPropertyName">
+            <summary>
+            The XML name of the individual <see cref="T:ND.MonitorDasboard.Web.Config.Monitor"/> instances in this collection.
+            </summary>
+        </member>
+        <member name="P:ND.MonitorDasboard.Web.Config.Monitors.CollectionType">
+            <summary>
+            Gets the type of the <see cref="T:System.Configuration.ConfigurationElementCollection"/>.
+            </summary>
+            <returns>The <see cref="T:System.Configuration.ConfigurationElementCollectionType"/> of this collection.</returns>
+        </member>
+        <member name="P:ND.MonitorDasboard.Web.Config.Monitors.ElementName">
+            <summary>
+            Gets the name used to identify this collection of elements
+            </summary>
+        </member>
+        <member name="M:ND.MonitorDasboard.Web.Config.Monitors.IsElementName(System.String)">
+            <summary>
+            Indicates whether the specified <see cref="T:System.Configuration.ConfigurationElement"/> exists in the <see cref="T:System.Configuration.ConfigurationElementCollection"/>.
+            </summary>
+            <param name="elementName">The name of the element to verify.</param>
+            <returns>
+            <see langword="true"/> if the element exists in the collection; otherwise, <see langword="false"/>.
+            </returns>
+        </member>
+        <member name="M:ND.MonitorDasboard.Web.Config.Monitors.GetElementKey(System.Configuration.ConfigurationElement)">
+            <summary>
+            Gets the element key for the specified configuration element.
+            </summary>
+            <param name="element">The <see cref="T:System.Configuration.ConfigurationElement"/> to return the key for.</param>
+            <returns>
+            An <see cref="T:System.Object"/> that acts as the key for the specified <see cref="T:System.Configuration.ConfigurationElement"/>.
+            </returns>
+        </member>
+        <member name="M:ND.MonitorDasboard.Web.Config.Monitors.CreateNewElement">
+            <summary>
+            Creates a new <see cref="T:ND.MonitorDasboard.Web.Config.Monitor"/>.
+            </summary>
+            <returns>
+            A new <see cref="T:ND.MonitorDasboard.Web.Config.Monitor"/>.
+            </returns>
+        </member>
+        <member name="P:ND.MonitorDasboard.Web.Config.Monitors.Item(System.Int32)">
+            <summary>
+            Gets the <see cref="T:ND.MonitorDasboard.Web.Config.Monitor"/> at the specified index.
+            </summary>
+            <param name="index">The index of the <see cref="T:ND.MonitorDasboard.Web.Config.Monitor"/> to retrieve.</param>
+        </member>
+        <member name="P:ND.MonitorDasboard.Web.Config.Monitors.Item(System.Object)">
+            <summary>
+            Gets the <see cref="T:ND.MonitorDasboard.Web.Config.Monitor"/> with the specified key.
+            </summary>
+            <param name="applicationCode">The key of the <see cref="T:ND.MonitorDasboard.Web.Config.Monitor"/> to retrieve.</param>
+        </member>
+        <member name="M:ND.MonitorDasboard.Web.Config.Monitors.Add(ND.MonitorDasboard.Web.Config.Monitor)">
+            <summary>
+            Adds the specified <see cref="T:ND.MonitorDasboard.Web.Config.Monitor"/> to the <see cref="T:System.Configuration.ConfigurationElementCollection"/>.
+            </summary>
+            <param name="monitor">The <see cref="T:ND.MonitorDasboard.Web.Config.Monitor"/> to add.</param>
+        </member>
+        <member name="M:ND.MonitorDasboard.Web.Config.Monitors.Remove(ND.MonitorDasboard.Web.Config.Monitor)">
+            <summary>
+            Removes the specified <see cref="T:ND.MonitorDasboard.Web.Config.Monitor"/> from the <see cref="T:System.Configuration.ConfigurationElementCollection"/>.
+            </summary>
+            <param name="monitor">The <see cref="T:ND.MonitorDasboard.Web.Config.Monitor"/> to remove.</param>
+        </member>
+        <member name="M:ND.MonitorDasboard.Web.Config.Monitors.GetItemAt(System.Int32)">
+            <summary>
+            Gets the <see cref="T:ND.MonitorDasboard.Web.Config.Monitor"/> at the specified index.
+            </summary>
+            <param name="index">The index of the <see cref="T:ND.MonitorDasboard.Web.Config.Monitor"/> to retrieve.</param>
+        </member>
+        <member name="M:ND.MonitorDasboard.Web.Config.Monitors.GetItemByKey(System.String)">
+            <summary>
+            Gets the <see cref="T:ND.MonitorDasboard.Web.Config.Monitor"/> with the specified key.
+            </summary>
+            <param name="applicationCode">The key of the <see cref="T:ND.MonitorDasboard.Web.Config.Monitor"/> to retrieve.</param>
+        </member>
+        <member name="M:ND.MonitorDasboard.Web.Config.Monitors.IsReadOnly">
+            <summary>
+            Gets a value indicating whether the element is read-only.
+            </summary>
+        </member>
+        <member name="T:ND.MonitorDasboard.Web.Config.Nodes">
+            <summary>
+            A collection of Node instances.
+            </summary>
+        </member>
+        <member name="F:ND.MonitorDasboard.Web.Config.Nodes.NodePropertyName">
+            <summary>
+            The XML name of the individual <see cref="T:ND.MonitorDasboard.Web.Config.Node"/> instances in this collection.
+            </summary>
+        </member>
+        <member name="P:ND.MonitorDasboard.Web.Config.Nodes.CollectionType">
+            <summary>
+            Gets the type of the <see cref="T:System.Configuration.ConfigurationElementCollection"/>.
+            </summary>
+            <returns>The <see cref="T:System.Configuration.ConfigurationElementCollectionType"/> of this collection.</returns>
+        </member>
+        <member name="P:ND.MonitorDasboard.Web.Config.Nodes.ElementName">
+            <summary>
+            Gets the name used to identify this collection of elements
+            </summary>
+        </member>
+        <member name="M:ND.MonitorDasboard.Web.Config.Nodes.IsElementName(System.String)">
+            <summary>
+            Indicates whether the specified <see cref="T:System.Configuration.ConfigurationElement"/> exists in the <see cref="T:System.Configuration.ConfigurationElementCollection"/>.
+            </summary>
+            <param name="elementName">The name of the element to verify.</param>
+            <returns>
+            <see langword="true"/> if the element exists in the collection; otherwise, <see langword="false"/>.
+            </returns>
+        </member>
+        <member name="M:ND.MonitorDasboard.Web.Config.Nodes.GetElementKey(System.Configuration.ConfigurationElement)">
+            <summary>
+            Gets the element key for the specified configuration element.
+            </summary>
+            <param name="element">The <see cref="T:System.Configuration.ConfigurationElement"/> to return the key for.</param>
+            <returns>
+            An <see cref="T:System.Object"/> that acts as the key for the specified <see cref="T:System.Configuration.ConfigurationElement"/>.
+            </returns>
+        </member>
+        <member name="M:ND.MonitorDasboard.Web.Config.Nodes.CreateNewElement">
+            <summary>
+            Creates a new <see cref="T:ND.MonitorDasboard.Web.Config.Node"/>.
+            </summary>
+            <returns>
+            A new <see cref="T:ND.MonitorDasboard.Web.Config.Node"/>.
+            </returns>
+        </member>
+        <member name="P:ND.MonitorDasboard.Web.Config.Nodes.Item(System.Int32)">
+            <summary>
+            Gets the <see cref="T:ND.MonitorDasboard.Web.Config.Node"/> at the specified index.
+            </summary>
+            <param name="index">The index of the <see cref="T:ND.MonitorDasboard.Web.Config.Node"/> to retrieve.</param>
+        </member>
+        <member name="P:ND.MonitorDasboard.Web.Config.Nodes.Item(System.Object)">
+            <summary>
+            Gets the <see cref="T:ND.MonitorDasboard.Web.Config.Node"/> with the specified key.
+            </summary>
+            <param name="machineName">The key of the <see cref="T:ND.MonitorDasboard.Web.Config.Node"/> to retrieve.</param>
+        </member>
+        <member name="M:ND.MonitorDasboard.Web.Config.Nodes.Add(ND.MonitorDasboard.Web.Config.Node)">
+            <summary>
+            Adds the specified <see cref="T:ND.MonitorDasboard.Web.Config.Node"/> to the <see cref="T:System.Configuration.ConfigurationElementCollection"/>.
+            </summary>
+            <param name="node">The <see cref="T:ND.MonitorDasboard.Web.Config.Node"/> to add.</param>
+        </member>
+        <member name="M:ND.MonitorDasboard.Web.Config.Nodes.Remove(ND.MonitorDasboard.Web.Config.Node)">
+            <summary>
+            Removes the specified <see cref="T:ND.MonitorDasboard.Web.Config.Node"/> from the <see cref="T:System.Configuration.ConfigurationElementCollection"/>.
+            </summary>
+            <param name="node">The <see cref="T:ND.MonitorDasboard.Web.Config.Node"/> to remove.</param>
+        </member>
+        <member name="M:ND.MonitorDasboard.Web.Config.Nodes.GetItemAt(System.Int32)">
+            <summary>
+            Gets the <see cref="T:ND.MonitorDasboard.Web.Config.Node"/> at the specified index.
+            </summary>
+            <param name="index">The index of the <see cref="T:ND.MonitorDasboard.Web.Config.Node"/> to retrieve.</param>
+        </member>
+        <member name="M:ND.MonitorDasboard.Web.Config.Nodes.GetItemByKey(System.String)">
+            <summary>
+            Gets the <see cref="T:ND.MonitorDasboard.Web.Config.Node"/> with the specified key.
+            </summary>
+            <param name="machineName">The key of the <see cref="T:ND.MonitorDasboard.Web.Config.Node"/> to retrieve.</param>
+        </member>
+        <member name="M:ND.MonitorDasboard.Web.Config.Nodes.IsReadOnly">
+            <summary>
+            Gets a value indicating whether the element is read-only.
+            </summary>
+        </member>
+        <member name="T:ND.MonitorDasboard.Web.Config.Environment">
+            <summary>
+            The Environment Configuration Element.
+            </summary>
+        </member>
+        <member name="M:ND.MonitorDasboard.Web.Config.Environment.IsReadOnly">
+            <summary>
+            Gets a value indicating whether the element is read-only.
+            </summary>
+        </member>
+        <member name="F:ND.MonitorDasboard.Web.Config.Environment.CodePropertyName">
+            <summary>
+            The XML name of the <see cref="P:ND.MonitorDasboard.Web.Config.Environment.Code"/> property.
+            </summary>
+        </member>
+        <member name="P:ND.MonitorDasboard.Web.Config.Environment.Code">
+            <summary>
+            Gets or sets the Code.
+            </summary>
+        </member>
+        <member name="F:ND.MonitorDasboard.Web.Config.Environment.LabelPropertyName">
+            <summary>
+            The XML name of the <see cref="P:ND.MonitorDasboard.Web.Config.Environment.Label"/> property.
+            </summary>
+        </member>
+        <member name="P:ND.MonitorDasboard.Web.Config.Environment.Label">
+            <summary>
+            Gets or sets the Label.
+            </summary>
+        </member>
+        <member name="T:ND.MonitorDasboard.Web.Config.Clusters">
+            <summary>
+            A collection of Cluster instances.
+            </summary>
+        </member>
+        <member name="F:ND.MonitorDasboard.Web.Config.Clusters.ClusterPropertyName">
+            <summary>
+            The XML name of the individual <see cref="T:ND.MonitorDasboard.Web.Config.Cluster"/> instances in this collection.
+            </summary>
+        </member>
+        <member name="P:ND.MonitorDasboard.Web.Config.Clusters.CollectionType">
+            <summary>
+            Gets the type of the <see cref="T:System.Configuration.ConfigurationElementCollection"/>.
+            </summary>
+            <returns>The <see cref="T:System.Configuration.ConfigurationElementCollectionType"/> of this collection.</returns>
+        </member>
+        <member name="P:ND.MonitorDasboard.Web.Config.Clusters.ElementName">
+            <summary>
+            Gets the name used to identify this collection of elements
+            </summary>
+        </member>
+        <member name="M:ND.MonitorDasboard.Web.Config.Clusters.IsElementName(System.String)">
+            <summary>
+            Indicates whether the specified <see cref="T:System.Configuration.ConfigurationElement"/> exists in the <see cref="T:System.Configuration.ConfigurationElementCollection"/>.
+            </summary>
+            <param name="elementName">The name of the element to verify.</param>
+            <returns>
+            <see langword="true"/> if the element exists in the collection; otherwise, <see langword="false"/>.
+            </returns>
+        </member>
+        <member name="M:ND.MonitorDasboard.Web.Config.Clusters.GetElementKey(System.Configuration.ConfigurationElement)">
+            <summary>
+            Gets the element key for the specified configuration element.
+            </summary>
+            <param name="element">The <see cref="T:System.Configuration.ConfigurationElement"/> to return the key for.</param>
+            <returns>
+            An <see cref="T:System.Object"/> that acts as the key for the specified <see cref="T:System.Configuration.ConfigurationElement"/>.
+            </returns>
+        </member>
+        <member name="M:ND.MonitorDasboard.Web.Config.Clusters.CreateNewElement">
+            <summary>
+            Creates a new <see cref="T:ND.MonitorDasboard.Web.Config.Cluster"/>.
+            </summary>
+            <returns>
+            A new <see cref="T:ND.MonitorDasboard.Web.Config.Cluster"/>.
+            </returns>
+        </member>
+        <member name="P:ND.MonitorDasboard.Web.Config.Clusters.Item(System.Int32)">
+            <summary>
+            Gets the <see cref="T:ND.MonitorDasboard.Web.Config.Cluster"/> at the specified index.
+            </summary>
+            <param name="index">The index of the <see cref="T:ND.MonitorDasboard.Web.Config.Cluster"/> to retrieve.</param>
+        </member>
+        <member name="P:ND.MonitorDasboard.Web.Config.Clusters.Item(System.Object)">
+            <summary>
+            Gets the <see cref="T:ND.MonitorDasboard.Web.Config.Cluster"/> with the specified key.
+            </summary>
+            <param name="code">The key of the <see cref="T:ND.MonitorDasboard.Web.Config.Cluster"/> to retrieve.</param>
+        </member>
+        <member name="M:ND.MonitorDasboard.Web.Config.Clusters.Add(ND.MonitorDasboard.Web.Config.Cluster)">
+            <summary>
+            Adds the specified <see cref="T:ND.MonitorDasboard.Web.Config.Cluster"/> to the <see cref="T:System.Configuration.ConfigurationElementCollection"/>.
+            </summary>
+            <param name="cluster">The <see cref="T:ND.MonitorDasboard.Web.Config.Cluster"/> to add.</param>
+        </member>
+        <member name="M:ND.MonitorDasboard.Web.Config.Clusters.Remove(ND.MonitorDasboard.Web.Config.Cluster)">
+            <summary>
+            Removes the specified <see cref="T:ND.MonitorDasboard.Web.Config.Cluster"/> from the <see cref="T:System.Configuration.ConfigurationElementCollection"/>.
+            </summary>
+            <param name="cluster">The <see cref="T:ND.MonitorDasboard.Web.Config.Cluster"/> to remove.</param>
+        </member>
+        <member name="M:ND.MonitorDasboard.Web.Config.Clusters.GetItemAt(System.Int32)">
+            <summary>
+            Gets the <see cref="T:ND.MonitorDasboard.Web.Config.Cluster"/> at the specified index.
+            </summary>
+            <param name="index">The index of the <see cref="T:ND.MonitorDasboard.Web.Config.Cluster"/> to retrieve.</param>
+        </member>
+        <member name="M:ND.MonitorDasboard.Web.Config.Clusters.GetItemByKey(System.String)">
+            <summary>
+            Gets the <see cref="T:ND.MonitorDasboard.Web.Config.Cluster"/> with the specified key.
+            </summary>
+            <param name="code">The key of the <see cref="T:ND.MonitorDasboard.Web.Config.Cluster"/> to retrieve.</param>
+        </member>
+        <member name="M:ND.MonitorDasboard.Web.Config.Clusters.IsReadOnly">
+            <summary>
+            Gets a value indicating whether the element is read-only.
+            </summary>
+        </member>
+        <member name="T:ND.MonitorDasboard.Web.Config.MonitorDashoardConfiguration">
+            <summary>
+            The MonitorDashoardConfiguration Configuration Section.
+            </summary>
+        </member>
+        <member name="F:ND.MonitorDasboard.Web.Config.MonitorDashoardConfiguration.MonitorDashoardConfigurationSectionName">
+            <summary>
+            The XML name of the MonitorDashoardConfiguration Configuration Section.
+            </summary>
+        </member>
+        <member name="F:ND.MonitorDasboard.Web.Config.MonitorDashoardConfiguration.MonitorDashoardConfigurationSectionPath">
+            <summary>
+            The XML path of the MonitorDashoardConfiguration Configuration Section.
+            </summary>
+        </member>
+        <member name="P:ND.MonitorDasboard.Web.Config.MonitorDashoardConfiguration.Instance">
+            <summary>
+            Gets the MonitorDashoardConfiguration instance.
+            </summary>
+        </member>
+        <member name="F:ND.MonitorDasboard.Web.Config.MonitorDashoardConfiguration.XmlnsPropertyName">
+            <summary>
+            The XML name of the <see cref="P:ND.MonitorDasboard.Web.Config.MonitorDashoardConfiguration.Xmlns"/> property.
+            </summary>
+        </member>
+        <member name="P:ND.MonitorDasboard.Web.Config.MonitorDashoardConfiguration.Xmlns">
+            <summary>
+            Gets the XML namespace of this Configuration Section.
+            </summary>
+            <remarks>
+            This property makes sure that if the configuration file contains the XML namespace,
+            the parser doesn't throw an exception because it encounters the unknown "xmlns" attribute.
+            </remarks>
+        </member>
+        <member name="M:ND.MonitorDasboard.Web.Config.MonitorDashoardConfiguration.IsReadOnly">
+            <summary>
+            Gets a value indicating whether the element is read-only.
+            </summary>
+        </member>
+        <member name="F:ND.MonitorDasboard.Web.Config.MonitorDashoardConfiguration.ClustersPropertyName">
+            <summary>
+            The XML name of the <see cref="P:ND.MonitorDasboard.Web.Config.MonitorDashoardConfiguration.Clusters"/> property.
+            </summary>
+        </member>
+        <member name="P:ND.MonitorDasboard.Web.Config.MonitorDashoardConfiguration.Clusters">
+            <summary>
+            Gets or sets the Clusters.
+            </summary>
+        </member>
+        <member name="F:ND.MonitorDasboard.Web.Config.MonitorDashoardConfiguration.MonitorsPropertyName">
+            <summary>
+            The XML name of the <see cref="P:ND.MonitorDasboard.Web.Config.MonitorDashoardConfiguration.Monitors"/> property.
+            </summary>
+        </member>
+        <member name="P:ND.MonitorDasboard.Web.Config.MonitorDashoardConfiguration.Monitors">
+            <summary>
+            Gets or sets the Monitors.
+            </summary>
+        </member>
+        <member name="T:ND.MonitorDasboard.Web.WebAPI.EnvironmentController">
+            <summary>
+            Environment Controller
+            </summary>
+        </member>
+        <member name="M:ND.MonitorDasboard.Web.WebAPI.EnvironmentController.Get">
+            <summary>
+            Get an array of string of Environments
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:ND.MonitorDasboard.Web.Schedule.BackgroundServerLifeTimer.OnTimerElapsed(System.Object)">
+            <summary>
+            Delegate for refreshing Life Tests
+            </summary>
+            <param name="sender"></param>
+        </member>
+    </members>
+</doc>

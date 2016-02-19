@@ -1,0 +1,81 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!--[if IE]>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <![endif]-->
+    <title>@ViewBag.Title</title>
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @Scripts.Render("~/bundles/angularjs")
+    @Scripts.Render("~/bundles/SignalR")
+    @Scripts.Render("~/bundles/HighCharts")
+    @Scripts.Render("~/bundles/AngularMVCFActories")
+    @Scripts.Render("~/bundles/AngularMVCCtrls")
+    @Scripts.Render("~/bundles/AngularMVCApp")
+    @Scripts.Render("~/bundles/angular-ui")
+    @Scripts.Render("~/bundles/angular-ui-grid")
+
+    @RenderSection("scripts", required: false)
+</head>
+<body ng-app="AngularMVCApp">
+    <div class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                @Html.ActionLink("Monitoring", "Index", "Home", new { area = "Monitoring" }, new { @class = "navbar-brand" })
+            </div>
+            <div class="navbar-collapse collapse" ng-controller="NavBarController">
+                <ul class="nav navbar-nav">
+                    <li>
+                        @Html.ActionLink("Live Charts", "Index", "LiveCharts", new { area = "Monitoring" }, null)
+                    </li>
+                </ul>
+                <ul class="nav navbar-nav">
+                    <li>
+                        @Html.ActionLink("Dashboards", "Index", "Dashboard", new { area = "Monitoring" }, null)
+                    </li>
+                </ul>
+                <ul class="nav navbar-nav">
+                    <li>
+                        @Html.ActionLink("Monitors", "Index", "Monitor", new { area = "Monitoring" }, null)
+                    </li>
+                </ul>
+                <ul class="nav navbar-nav">
+                    <li>
+                        @Html.ActionLink("Web APIs Samples", "Index", "WebApis", new { area = "Monitoring" }, null)
+                    </li>
+                </ul>
+                <ul class="nav navbar-nav">
+                    <li>@Html.ActionLink("Web APIs Help", "Index", "Help", new { area = "HelpPage" }, null)</li>
+                </ul>
+                <ul class="nav navbar-nav">
+                    <li>
+                        <button type="button" btn-checkbox
+                                ng-class="{true: 'btn btn-success',false:'btn btn-danger'}[PingActivated.value]"
+                                ng-model="PingActivated.value"
+                                ng-change="updatePing()">
+                            {{PingActivated.value ? 'Ping activated':'Ping down'}}
+                        </button>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="container body-content">
+        @RenderBody()
+        <hr />
+        <footer>
+            <p>&copy; @DateTime.Now.Year - XPO</p>
+        </footer>
+    </div>
+</body>
+</html>

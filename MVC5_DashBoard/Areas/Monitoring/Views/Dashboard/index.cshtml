@@ -1,0 +1,29 @@
+﻿<div class="container" ng-app="AngularMVCApp" ng-controller="DashboardsController">
+
+    <form class="form-inline">
+        <fieldset>
+            <div class="form-group col-md-3">
+                <span class="glyphicon glyphicon-th-large"></span>
+                <span for="inputenvFilter" class="control-label ">Environment</span><br />
+                <select id="inputenvFilter" ng-model="envFilter" class="form-control" ng-change="refreshChart(envFilter,appFilter)">
+                    <option ng-repeat="env in Environments" value="{{env}}">{{env}}</option>
+                </select>
+            </div>
+            <div class="form-group col-md-3">
+                <span class="glyphicon glyphicon-cog"></span>
+                <span for="inputappFilter" class="control-label">Application</span><br />
+                <select ng-model="appFilter" id="inputappFilter" class="form-control" ng-change="refreshChart(envFilter,appFilter)">
+                    <option ng-repeat="appli in Applications" value="{{appli}}">{{appli}}</option>
+                </select>
+            </div>
+            <div class="form-group col-md-3">
+                <br />
+                <button class="btn btn-warning glyphicon glyphicon-refresh" ng-click="refreshChart(envFilter,appFilter)"> Refresh</button>
+            </div>
+        </fieldset>
+    </form>
+    <br />
+    <div>
+        <highchart id="chart1" config="chart1Config" ></highchart>
+    </div>
+</div>

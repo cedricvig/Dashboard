@@ -1,0 +1,83 @@
+﻿@{
+    ViewBag.Title = "Monitor Dashboard";
+}
+
+<div class="container" ng-controller="HomePageController" ng-init="state = true;">
+    <form class="form-inline">
+        <fieldset>
+            <div class="form-group col-md-3">
+                <span class="glyphicon glyphicon-th-large"></span>
+                <span for="inputenvFilter" class="control-label ">Environment</span><br />
+                <select id="inputenvFilter" ng-model="envFilterL" class="form-control">
+                    <option value="">(all)</option>
+                    <option ng-repeat="env in Environments" value="{{env}}">{{env}}</option>
+                </select>
+            </div>
+            <div class="form-group col-md-3">
+                <span class="glyphicon glyphicon-cog"></span>
+                <span for="inputappFilter" class="control-label">Application</span><br />
+                <input ng-model="appFilter" id="inputappFilter" type="text" class="form-control"
+                       placeholder="Filter by" autofocus>
+                <button class="btn btn-default glyphicon glyphicon-search" ng-click="open(appFilter)"></button>
+            </div>
+            @*<div class="form-group col-md-3">
+                    <span class="glyphicon glyphicon-refresh"></span>
+                    <span class="control-label">Refresh every</span><br />
+                    <input ng-model="RefreshTime" ng-change="ParamService.UpdateRefreshTime(RefreshTime)"
+                           id="inputrefreshTime"
+                           type="number" min="3" max="30" required
+                           class="form-control" placeholder="" autofocus>
+                    <span class="control-label">s</span>
+                </div>*@
+            <div class="form-group col-md-3">
+                <span class="glyphicon glyphicon-refresh"></span>
+                <span class="control-label">Last Refresh</span><br />
+                <span class="label label-primary">{{currentServerTime}}</span>
+            </div>
+        </fieldset>
+        <br />
+    </form>
+
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12 panel" ng-repeat="cluster in clusterModel.Clusters | filter:envFilterL">
+                <div class="panel-heading">{{cluster.Environment.Code}}</div>
+                <div class="tuile" ng-repeat="mon in cluster.Monitors | orderBy:'+ApplicationCode' | filter:appFilter">
+                    <div ng-click="state = !state"
+                         ng-class="{0: 'row btn-inactive',1:'row btn-success',2:'row btn-danger',3:'row btn-warning'}[GetLifeResult(mon.Nodes)]">
+                        <div class="col-md-12">
+                            <div class="row">
+                                <div class="col-md-9">
+                                    <span style="font-size:2em;">{{mon.ApplicationCode}}</span>
+                                </div>
+                                <div class="col-md-3 pull-right">
+                                    <span style="font-size:2em;">{{GetNodeOKCount(mon.Nodes)}}</span>
+                                    <span style="font-size:0.8em;">/{{mon.Nodes.length}}</span>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <h8>{{mon.ApplicationName}}</h8>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div ng-hide="state">
+                        <div class="row list-group-item"
+                             ng-style="node.LifeResult!=200 ? {color:'#ff4f96'}:{color: ''}"
+                             ng-repeat="node in mon.Nodes">
+                            {{node.MachineName}}:{{node.LifeResult}}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="alert alert-warning text-center" ng-show="PingActivated.value && clusterModel.Clusters.length == 0">
+        <span class="glyphicon glyphicon-refresh glyphicon-refresh-animate"></span> Loading...
+    </div>
+
+    @* Include Modal Appsearch *@
+    <div ng-include="'@Url.Action("Index", "AppSearch")'" />
+</div>
