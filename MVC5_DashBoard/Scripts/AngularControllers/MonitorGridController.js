@@ -52,6 +52,6 @@
         $scope.gridOptions.data = Monitor.query({ pageIndex: paginationOptions.pageIndex, pageSize: paginationOptions.pageSize });
     };
     
-    setGridSize('grid1', window.innerWidth * 0.9 + 'px');
+    setGridSize('grid1', window.innerWidth * 0.94 + 'px');
     getPage();
 }

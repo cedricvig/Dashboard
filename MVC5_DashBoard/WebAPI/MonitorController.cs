@@ -2,6 +2,7 @@
 using ND.Services;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
@@ -26,7 +27,12 @@ namespace ND.MonitorDasboard.Web.WebAPI
         // GET api/Monitor?pageIndex={pageIndex}&pageSize={pageSize}
         public IEnumerable<MonitorResultBO> Get(int pageIndex, int pageSize)
         {
-            return MonitorService.GetAllPaging(pageIndex, pageSize);   
+            Stopwatch sw = new Stopwatch();
+            sw.Start();
+            IEnumerable<MonitorResultBO> ret = MonitorService.GetAllPaging(pageIndex, pageSize);
+            sw.Stop();
+
+            return ret;
         }
 
         // POST api/<controller>

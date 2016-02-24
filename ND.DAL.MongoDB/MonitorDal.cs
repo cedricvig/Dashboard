@@ -30,7 +30,6 @@ namespace ND.DAL.MongoDB
 
             var sortBy = Builders<MonitorResultBO>.Sort.Descending(m => m.ResultDate);
             var cursor = collection.Find(new BsonDocument()).Sort(sortBy);
-
             var skipNb = pageIndex * pageSize;
 
             return cursor.Skip(skipNb).Limit(pageSize).ToListAsync().Result; 

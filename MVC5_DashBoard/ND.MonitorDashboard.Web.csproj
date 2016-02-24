@@ -299,6 +299,8 @@
     <Content Include="Areas\Monitoring\Views\AppSearch\index.cshtml" />
     <Content Include="Areas\Monitoring\Views\Dashboard\index.cshtml" />
     <Content Include="Areas\Monitoring\Views\Monitor\Index.cshtml" />
+    <Content Include=".bowerrc" />
+    <Content Include="bower.json" />
     <None Include="Config\ConfigurationSectionDesigner.csd.xsd">
       <DependentUpon>ConfigurationSectionDesigner.csd</DependentUpon>
       <SubType>Designer</SubType>
@@ -307,6 +309,7 @@
     <Content Include="Content\ui-grid.woff" />
     <Content Include="Content\ui-grid.ttf" />
     <Content Include="Content\ui-grid.eot" />
+    <Content Include="package.json" />
     <None Include="Properties\PublishProfiles\Dev.pubxml" />
     <None Include="Properties\PublishProfiles\IIS.pubxml" />
     <Content Include="Scripts\AngularApp\AngularMVCApp.js" />
