@@ -43,7 +43,6 @@ namespace ND.MonitorDasboard.Web
             // https://github.com/pablojim/highcharts-ng
             bundles.Add(new ScriptBundle("~/bundles/HighCharts").Include(
                 "~/Scripts/highcharts-ng.js",
-                //"~/Scripts/highcharts/modules/exporting.js",
                 "~/Scripts/highcharts/highcharts.js"));
 
             // Angular UI Grid

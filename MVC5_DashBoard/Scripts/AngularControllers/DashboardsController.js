@@ -28,10 +28,6 @@
                         }
                     }
                 }
-            },
-            exporting: {
-                enabled: true,
-                filename:'chart'
             }
         },
         series: [{
