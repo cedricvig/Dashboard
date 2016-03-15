@@ -1,0 +1,68 @@
+﻿@model IEnumerable<ND.BO.ClusterBO>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+@{
+    var grid = new WebGrid(Model);
+}
+<div id="grid" class="table table-responsive">
+    @grid.GetHtml(columns: grid.Columns(
+            grid.Column("Label", header: "Label", style: "col-lg-2",
+             format: @<text>
+                @Html.Raw("<a data-modal='' href='/Cluster/Details/" + item.Label +
+               "' title='Detail'> <span class='glyphicon glyphicon-arrow-right'></span> </a>")
+                @Html.Raw("<a data-modal='' href='/Cluster/Edit/" + item.Label +
+               "' title='Edit'> <span class='glyphicon glyphicon-edit'> " + item.Label + "</span> </a>")
+            </text>),
+                grid.Column("Environment.Code", header: "Env", style: "col-lg-2")
+
+                ),
+                tableStyle: "table table-bordered table-hover")
+</div>
+
+<div id='myModal' class='modal fade in'>
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div id='myModalContent'></div>
+        </div>
+    </div>
+</div>
+
+<script>
+    $(function () {
+        $.ajaxSetup({ cache: false });
+        $("a[data-modal]").on("click", function (e) {
+            $('#myModalContent').load(this.href, function () {
+                $('#myModal').modal({
+                    keyboard: true
+                }, 'show');
+                bindForm(this);
+            });
+            return false;
+        });
+    });
+
+    function bindForm(dialog) {
+        $('form', dialog).submit(function () {
+            $('#progress').show();
+            $.ajax({
+                url: this.action,
+                type: this.method,
+                data: $(this).serialize(),
+                success: function (result) {
+                    if (result.success) {
+                        $('#myModal').modal('hide');
+                        $('#progress').hide();
+                        location.reload();
+                    } else {
+                        $('#progress').hide();
+                        $('#myModalContent').html(result);
+                        bindForm();
+                    }
+                }
+            });
+            return false;
+        });
+    }
+</script>

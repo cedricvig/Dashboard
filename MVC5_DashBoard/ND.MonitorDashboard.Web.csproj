@@ -180,6 +180,7 @@
     <Compile Include="Areas\Monitoring\Controllers\AppSearchController.cs" />
     <Compile Include="Areas\Monitoring\Controllers\DashboardController.cs" />
     <Compile Include="Areas\Monitoring\Controllers\MonitorController.cs" />
+    <Compile Include="Areas\Monitoring\Controllers\ClusterController.cs" />
     <Compile Include="Areas\Monitoring\MonitoringAreaRegistration.cs" />
     <Compile Include="Config\ConfigurationSectionDesigner.csd.cs">
       <AutoGen>True</AutoGen>
@@ -301,6 +302,10 @@
     <Content Include="Areas\Monitoring\Views\Monitor\Index.cshtml" />
     <Content Include=".bowerrc" />
     <Content Include="bower.json" />
+    <Content Include="Areas\Monitoring\Views\Cluster\Index.cshtml" />
+    <Content Include="Areas\Monitoring\Views\Cluster\Create.cshtml" />
+    <Content Include="Areas\Monitoring\Views\Cluster\Details.cshtml" />
+    <Content Include="Areas\Monitoring\Views\Cluster\Edit.cshtml" />
     <None Include="Config\ConfigurationSectionDesigner.csd.xsd">
       <DependentUpon>ConfigurationSectionDesigner.csd</DependentUpon>
       <SubType>Designer</SubType>
@@ -1184,7 +1189,9 @@
     <Content Include="Areas\Monitoring\Views\LiveCharts\Index.cshtml" />
     <Content Include="Areas\Monitoring\Views\WebApis\index.cshtml" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="Areas\Monitoring\Views\ClusterMonitor\" />
+  </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
     <Content Include="fonts\glyphicons-halflings-regular.ttf" />

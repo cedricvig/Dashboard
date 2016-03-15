@@ -2,7 +2,7 @@
 
     var paginationOptions = {
         pageIndex: 1,
-        pageSize: 5
+        pageSize: 10
     };
 
     $scope.gridOptions = {

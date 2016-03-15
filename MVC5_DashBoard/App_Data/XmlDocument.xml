@@ -594,6 +594,11 @@
             </summary>
             <param name="documentPath">The physical path to XML document.</param>
         </member>
+        <member name="T:ND.MonitorDasboard.Web.Areas.Monitoring.Controllers.ClusterController">
+            <summary>
+            Parameter of monitors declared
+            </summary>
+        </member>
         <member name="T:ND.MonitorDasboard.Web.Config.Monitor">
             <summary>
             The Monitor Configuration Element.
